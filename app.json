@@ -1,0 +1,26 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/mine/mine"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "微波炉.png",
+      "selectedIconPath": "微波炉.png"
+    },
+    {
+      "pagePath": "pages/mine/mine",
+      "text": "个人",
+      "iconPath": "面包机.png",
+      "selectedIconPath": "面包机.png"
+    }]
+  }
+}
