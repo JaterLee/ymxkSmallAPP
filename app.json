@@ -12,15 +12,15 @@
   "tabBar": {
     "list": [{
       "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "微波炉.png",
-      "selectedIconPath": "微波炉.png"
+      "text": "",
+      "iconPath": "images/微波炉.png",
+      "selectedIconPath": "images/垃圾桶.png"
     },
     {
       "pagePath": "pages/mine/mine",
-      "text": "个人",
-      "iconPath": "面包机.png",
-      "selectedIconPath": "面包机.png"
+      "text": "",
+      "iconPath": "images/面包机.png",
+      "selectedIconPath": "images/垃圾桶.png"
     }]
   }
 }
