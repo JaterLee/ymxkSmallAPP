@@ -1,12 +1,34 @@
 /**index.wxss**/
-.banner{
+
+.banner {
   display: block;
 }
+
 .bannerImage {
   width: 100%;
   height: 80%;
 }
+
 .bannerDesView {
-  width: 100;
-  height: 20%;
+  font-size: 14px;
+  text-align: center;
+  height: 96rpx;
+}
+
+.newsListView {
+}
+
+.newItemView {
+  display: flex;
+  flex-direction: row;
+  height: 150rpx;
+}
+
+.newTitleView {
+  width: 70%;
+}
+
+.newImgView {
+  width: 100rpx;
+  height: 100%;
 }

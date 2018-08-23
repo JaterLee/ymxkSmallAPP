@@ -9,6 +9,19 @@
     </swiper>
   </view>
   <view class="bannerDesView">
-    <text src="{{bannerDes}}"></text>
+    <text>{{bannerDes}}</text>
+  </view>
+
+  <view class='newsListView'>
+    <block wx:for='{{newsListData}}'>
+      <view class='newItemView'>
+        <view class='newTitleView'>
+          <text>{{item.title}}</text>
+        </view>
+        <view class='newImgView'>
+          <image src='{{item.img}}' mode='aspectFit'></image>
+        </view>
+      </view>
+    </block>
   </view>
 </view>

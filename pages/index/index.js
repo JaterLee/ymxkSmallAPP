@@ -4,24 +4,35 @@ Page({
    */
   data: {
     /**
+     * 数据源
+     */
+    dataSource: [],
+
+    /**
      * banner
      * bannerData 图片list
      * bannerDes  描述
      */
     bannerData:[],
     bannerDes:"",
-    //content
-    contentListData:[],
-
-    dataSource:[],
-    imageList:[]
+    
+    /**
+     * 新闻列表
+     */
+    newsListData:[],
   },
 
   /**
    * banner事件
    */
   bindchange(e){
-    console.log("-------bindchange--%@----", e);
+    var changeEvent = e;
+    let currentIndex = changeEvent.detail.current;
+    var that  = this;
+    var bannerItem =that.data.bannerData[currentIndex];
+    that.setData({
+      "bannerDes":bannerItem.des
+    });
   },
 
   /**
@@ -57,37 +68,21 @@ Page({
         }
         that.setData({
           "bannerData":bannerListTemp,
-          "bannerDes": bannerListTemp[0].title
+          "bannerDes": bannerListTemp[0].des
         });
-        return;
 
-
-
-
-        var imageList = new Array;
-        for (var i = 0; i < dataSource.length; i++) {
-          var item = dataSource[i];
-          var imageUrls = item.thumbnailURLs;
-          if (imageUrls != null) {
-            for (var a = 0; a < imageUrls.length; a++) {
-              var imageurl = imageUrls[a];
-              // console.log("----imageurl-----%s-----------", imageurl);
-              if (imageurl != null) {
-                var temp = imageurl.slice(8);
-                // console.log("---temp---%s-----------", temp);
-                imageurl = "https://images.weserv.nl/?url="+temp;
-                // console.log("--!!!!!!!-imageurl---%s-----------", imageurl);
-                imageList.push(imageurl);
-              }
-            }
-            // imageList.push(imageUrls[0])
-            console.log("--6666666666!-imageList---%@-----------", imageList);  
-          }
-        }   
+        var newsItemList = new Array;
+        for (var i=1; i < dataSource.length; i++) {
+          var dataItem = dataSource[i];
+          var imgTemp = "https://images.weserv.nl/?url=" + dataItem.thumbnailURLs[0];
+          imgTemp = imgTemp;
+          var newItem = { title: dataItem.title, img: imgTemp,commentsCount: dataItem.commentsCount};
+          newsItemList.push(newItem);
+        }
+        console.log("----------------------%@",newsItemList);
         that.setData({
-          "imageList":imageList
+          "newsListData":newsItemList
         });
-        that.refreshList(dataSource);   
       }
     })
   },
