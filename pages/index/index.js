@@ -3,17 +3,30 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list:[]
+    /**
+     * banner
+     * bannerData 图片list
+     * bannerDes  描述
+     */
+    bannerData:[],
+    bannerDes:"",
+    //content
+    contentListData:[],
+
+    dataSource:[],
+    imageList:[]
   },
 
-  refreshList: function (res) {
-    // console.log("--6666666666!-res---%@-----------", res);  
-    this.setData({
-      "list": res
-    })
+  /**
+   * banner事件
+   */
+  bindchange(e){
+    console.log("-------bindchange--%@----", e);
   },
 
-
+  /**
+   * 拉取首页数据
+   */
   fetchDataListFun: function (){
     var that = this;
     wx.request({
@@ -26,6 +39,32 @@ Page({
       success: function (res) {
         console.log(res);
         var dataSource = res.data["result"];
+        if (dataSource.length == 0) {
+          console.log("dataSource 居然是空的");
+          return;
+        }
+        var bannerItem = dataSource[0];
+        var childElements = bannerItem.childElements;
+        var bannerListTemp = new Array;
+        console.log("childElements=====%@", childElements);
+        for (var i=0; i < childElements.length; i++) {
+          var item = childElements[i];
+          console.log("item=====%@", item);
+          var imgurl = item.thumbnailURLs[0];
+          imgurl = "https://images.weserv.nl/?url=" + imgurl;
+          var bannerItem = { img: imgurl, des: item.title};
+          bannerListTemp.push(bannerItem);
+        }
+        that.setData({
+          "bannerData":bannerListTemp,
+          "bannerDes": bannerListTemp[0].title
+        });
+        return;
+
+
+
+
+        var imageList = new Array;
         for (var i = 0; i < dataSource.length; i++) {
           var item = dataSource[i];
           var imageUrls = item.thumbnailURLs;
@@ -38,12 +77,16 @@ Page({
                 // console.log("---temp---%s-----------", temp);
                 imageurl = "https://images.weserv.nl/?url="+temp;
                 // console.log("--!!!!!!!-imageurl---%s-----------", imageurl);
+                imageList.push(imageurl);
               }
             }
-            item.thumbnailURLs = imageUrls;
-            //  console.log("--6666666666!-res---%@-----------", dataSource);  
+            // imageList.push(imageUrls[0])
+            console.log("--6666666666!-imageList---%@-----------", imageList);  
           }
         }   
+        that.setData({
+          "imageList":imageList
+        });
         that.refreshList(dataSource);   
       }
     })
