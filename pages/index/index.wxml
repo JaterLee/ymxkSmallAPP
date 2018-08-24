@@ -8,7 +8,11 @@
       </block>
     </swiper>
   </view>
-  <view class="bannerDesView">
-    <text src="{{bannerDes}}"></text>
+  <view class='bannerDesText'>
+    <text >{{bannerDes}}</text>
+  </view>
+
+  <view class="newsList">
+
   </view>
 </view>

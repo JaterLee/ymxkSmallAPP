@@ -5,8 +5,8 @@ Page({
   data: {
     /**
      * banner
-     * bannerData 图片list
-     * bannerDes  描述
+     * bannerData :banner object list [{img: imgurl, des: item.title}]
+     * bannerDes  :banner bottom description
      */
     bannerData:[],
     bannerDes:"",
@@ -22,6 +22,14 @@ Page({
    */
   bindchange(e){
     console.log("-------bindchange--%@----", e);
+    var changeEvent = e;
+    let currentIndex = changeEvent.detail.current;
+    console.log("-------currentIndex--%@----", currentIndex);
+    var that = this;
+    var bannerItem = that.data.bannerData[currentIndex];
+    this.setData({
+      "bannerDes":bannerItem.des
+    });
   },
 
   /**
@@ -57,7 +65,7 @@ Page({
         }
         that.setData({
           "bannerData":bannerListTemp,
-          "bannerDes": bannerListTemp[0].title
+          "bannerDes": bannerListTemp[0].des
         });
         return;
 

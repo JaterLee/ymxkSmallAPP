@@ -1,12 +1,15 @@
 /**index.wxss**/
+.container{
+  height: 100%;
+}
 .banner{
   display: block;
 }
 .bannerImage {
   width: 100%;
-  height: 80%;
+  height: 100%;
 }
-.bannerDesView {
-  width: 100;
-  height: 20%;
+.bannerDesText {
+  font-size: 15px;
+  text-align: center;
 }
