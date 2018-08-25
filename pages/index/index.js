@@ -10,8 +10,8 @@ Page({
 
     /**
      * banner
-     * bannerData 图片list
-     * bannerDes  描述
+     * bannerData :banner object list [{img: imgurl, des: item.title}]
+     * bannerDes  :banner bottom description
      */
     bannerData:[],
     bannerDes:"",
