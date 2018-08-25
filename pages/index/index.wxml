@@ -14,12 +14,8 @@
   <view class='newsListView'>
     <block wx:for='{{newsListData}}'>
       <view class='newItemView'>
-        <view class='newTitleView'>
-          <text>{{item.title}}</text>
-        </view>
-        <view class='newImgView'>
-          <image src='{{item.img}}' mode='aspectFit'></image>
-        </view>
+        <text class='item-title'>{{item.title}}</text>
+        <image class='item-image' src='{{item.img}}' mode='widthFix'></image>
       </view>
     </block>
   </view>

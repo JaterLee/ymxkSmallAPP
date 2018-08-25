@@ -10,25 +10,35 @@
 }
 
 .bannerDesView {
-  font-size: 14px;
+  margin-top: 20rpx;
+  font-size: 16px;
+  font-weight: bold;
   text-align: center;
-  height: 96rpx;
+  height: 70rpx;
 }
 
 .newsListView {
+  display: flex;
+  flex-direction: column;
 }
 
 .newItemView {
   display: flex;
   flex-direction: row;
   height: 150rpx;
+  border-top: 1px solid lightgray;
 }
 
-.newTitleView {
-  width: 70%;
+.item-title {
+  align-self: center;
+  flex:1;
+  margin-left: 15rpx;
+  margin-right: 15rpx;
 }
 
-.newImgView {
-  width: 100rpx;
-  height: 100%;
+.item-image {
+  align-self: center;
+  width: 200rpx;
+  height: 100rpx; 
+  margin-right: 15rpx;
 }
