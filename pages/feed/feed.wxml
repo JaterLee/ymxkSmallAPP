@@ -1,0 +1,18 @@
+<!--pages/feed/feed.wxml-->
+<view class='container' style='height:100%'>
+  <view class='clubsView'>
+    <block wx:for="{{clubsListData}}">
+      <view class='bannerItemView'>
+        <image class='item-image' src='{{item.thumbnailURL}}'></image>
+        <view class='bannerContentView'>
+          <text class='item-title'>{{item.name}}</text>
+          <text class='item-des'>{{item.des}}</text>
+        </view>
+      </view>
+    </block>
+    <text class='moreTipView'>{{'更多...'}}</text>
+  </view>
+  <view class='topicsView'>
+
+  </view>
+</view>

@@ -1,26 +1,29 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/mine/mine"
+    "pages/feed/feed"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black",
+      "enablePullDownRefresh": true,
+      "backgroundTextStyle": "dark"
   },
   "tabBar": {
-    "list": [{
-      "pagePath": "pages/index/index",
-      "text": "首页",
-      "iconPath": "images/微波炉.png",
-      "selectedIconPath": "images/垃圾桶.png"
-    },
-    {
-      "pagePath": "pages/mine/mine",
-      "text": "我的",
-      "iconPath": "images/面包机.png",
-      "selectedIconPath": "images/垃圾桶.png"
-    }]
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/微波炉.png",
+        "selectedIconPath": "images/垃圾桶.png"
+      },
+      {
+        "pagePath": "pages/feed/feed",
+        "text": "动态",
+        "iconPath": "images/面包机.png",
+        "selectedIconPath": "images/垃圾桶.png"
+      }
+    ]
   }
 }
