@@ -15,7 +15,7 @@
     <block wx:for='{{newsListData}}'>
       <view class='newItemView'>
         <text class='item-title'>{{item.title}}</text>
-        <image class='item-image' src='{{item.img}}' mode='widthFix'></image>
+        <image class='item-image' src='{{item.img}}' binderror='onImageLoadFail' mode='widthFix'></image>
       </view>
     </block>
   </view>

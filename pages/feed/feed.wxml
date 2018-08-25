@@ -8,11 +8,32 @@
           <text class='item-title'>{{item.name}}</text>
           <text class='item-des'>{{item.des}}</text>
         </view>
+        <image class='item-arrow' src='../../images/arrow.png'></image>
       </view>
     </block>
     <text class='moreTipView'>{{'更多...'}}</text>
   </view>
   <view class='topicsView'>
-
+  </view>
+  <view class='topicsListView'>
+    <block wx:for='{{topicsListData}}'>
+      <view class='userInfoView'>
+        <image class='userAvatarImg' src='{{item.userHeadImageURL}}'></image>
+        <view class='userInfo'>
+        <text class='userNickname'>{{item.userName}}</text>
+        <text class='userDes'>{{item.clubName}}</text>
+        </view>
+        <text class='reportText'>{{'举报'}}</text>
+      </view>
+      <view class='topicsContentView'>
+      <text class='topicsText'>{{item.topicContent}}</text>
+      <image class='topicsImg' src='{{item.contentImg}}'></image>
+      </view>
+      <view class='commandView'>
+      <button class='shareBtn'>{{'分享'}}</button>
+      <button class='commentBtn'>{{'评论'}}</button>
+      <button class='loveBtn'>{{'点赞'}}</button>
+      </view>
+    </block>
   </view>
 </view>

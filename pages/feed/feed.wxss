@@ -37,7 +37,14 @@
 .bannerContentView {
   display: flex;
   flex-direction: column;
+  flex: 1;
   margin-left: 30rpx;
+}
+
+.item-arrow {
+  margin-right: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
 }
 
 .item-title {
@@ -53,4 +60,10 @@
   margin-top: 10px;
   font-size: 15px;
   color: gray;
+}
+
+.topicsListView {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
 }

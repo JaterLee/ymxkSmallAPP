@@ -94,6 +94,12 @@ Page({
     this.fetchDataListFun();
   },
 
+/**
+ * image load fail
+ */
+  onImageLoadFail(e) {
+    // console.log('图片加载失败~~~~~%@', e);
+  },
 
   /**
    * 生命周期函数--监听页面加载
