@@ -9,7 +9,6 @@
 .clubsView {
   display: flex;
   flex-direction: column;
-  height: 50%;
   align-items: center;
   background-color: rgba(211, 211, 211, 0.397);
 }
@@ -57,13 +56,64 @@
 }
 
 .moreTipView {
-  margin-top: 10px;
+  margin-top: 5px;
   font-size: 15px;
   color: gray;
+  height: 30px;
 }
 
 .topicsListView {
   display: flex;
   flex-direction: column;
-  height: 50%;
+}
+
+.userInfoView {
+  display: flex;
+  flex-direction: block;
+  height: 100px;
+}
+
+.userAvatarImg {
+  margin-top: 15px;
+  margin-left: 15px;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.userNickname {
+  color: rgb(0, 140, 255);
+  font-size: 17px;
+  font: bolder;
+}
+
+.userDes {
+  color: lightgray;
+  font-size: 10px;
+}
+
+.topicsContentView {
+  display: flex;
+  flex-direction: column;
+}
+
+.topicsText {
+  font-size: 17px;
+}
+
+.topicsImg {
+  height: 77px;
+  width: 77px;
+}
+
+.commandView {
+  display: flex;
+  flex-direction: block;
+  height: 50px;
 }
