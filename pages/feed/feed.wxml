@@ -34,6 +34,7 @@
       <button class='commentBtn'>{{'评论'}}</button>
       <button class='loveBtn'>{{'点赞'}}</button>
       </view>
+      <view class='listLineView'></view>
     </block>
   </view>
 </view>

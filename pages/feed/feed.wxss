@@ -104,16 +104,24 @@
 }
 
 .topicsText {
+  margin-left: 15px;
   font-size: 17px;
 }
 
 .topicsImg {
-  height: 77px;
-  width: 77px;
+  margin-left: 15px;
+  margin-top: 15px;
+  height: 250px;
+  width: 150px;
 }
 
 .commandView {
   display: flex;
   flex-direction: block;
   height: 50px;
+}
+
+.listLineView {
+  height: 1px;
+  color: lightgray;
 }

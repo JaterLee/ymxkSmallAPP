@@ -8,7 +8,9 @@ Page({
     //社区列表
     clubsListData: [],
     //动态列表
-    topicsListData: []
+    topicsListData: [],
+    //动态pageIndex
+    pageIndex: 1
   },
 
   /**
@@ -76,7 +78,7 @@ Page({
           "orderType": "faBuShiJian",
           "maxRepliesCount": 0,
           "elementsPerPage": 20,
-          "pageIndex": 1
+          "pageIndex": that.data.pageIndex
         }
       },
       header: {
@@ -97,9 +99,16 @@ Page({
             }
           }
         }
+        if (that.data.pageIndex > 1) {
+          var tempList = new Array;
+          tempList.push(that.data.topicsListData);
+          tempList.push(list);
+          list = tempList;
+        }
         console.log('error=%@', list);
         that.setData({
-          "topicsListData" : list
+          "pageIndex" : that.data.pageIndex++,
+          "topicsListData" :  list
         })
       },
       fail: function (res) { 
@@ -147,14 +156,17 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.setData({
+      "pageIndex" : 0
+    });
+    this.fetchTopicsRequest();
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.fetchTopicsRequest();
   },
 
   /**

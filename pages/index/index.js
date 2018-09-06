@@ -6,7 +6,7 @@ Page({
     /**
      * 数据源
      */
-    dataSource: [],
+    dataSource:[],
 
     /**
      * banner
@@ -20,6 +20,7 @@ Page({
      * 新闻列表
      */
     newsListData:[],
+    newsPageIndex:1,
   },
 
   /**
@@ -45,7 +46,7 @@ Page({
       header: {
         'content-type': 'application/json'
       },
-      data: { "deviceType": "iPhone7,2", "deviceId": "58B8646F-0263-4676-82A1-216AF6D609B0", "os": "iOS", "osVersion": "11.2", "app": "GSApp", "appVersion": "4.1.5", "request": { "parentNodeId": "news", "nodeIds": "0", "pageIndex": "1", "elementsCountPerPage": "20" } },
+      data: { "deviceType": "iPhone7,2", "deviceId": "58B8646F-0263-4676-82A1-216AF6D609B0", "os": "iOS", "osVersion": "11.2", "app": "GSApp", "appVersion": "4.1.5", "request": { "parentNodeId": "news", "nodeIds": "0", "pageIndex": that.data.newsPageIndex, "elementsCountPerPage": "20" } },
       method: 'POST',
       success: function (res) {
         console.log(res);
@@ -54,23 +55,24 @@ Page({
           console.log("dataSource 居然是空的");
           return;
         }
-        var bannerItem = dataSource[0];
-        var childElements = bannerItem.childElements;
-        var bannerListTemp = new Array;
-        console.log("childElements=====%@", childElements);
-        for (var i=0; i < childElements.length; i++) {
-          var item = childElements[i];
-          console.log("item=====%@", item);
-          var imgurl = item.thumbnailURLs[0];
-          imgurl = "https://images.weserv.nl/?url=" + imgurl;
-          var bannerItem = { img: imgurl, des: item.title};
-          bannerListTemp.push(bannerItem);
+        if (that.data.newsPageIndex == 1) {
+          var bannerItem = dataSource[0];
+          var childElements = bannerItem.childElements;
+          var bannerListTemp = new Array;
+          console.log("childElements=====%@", childElements);
+          for (var i = 0; i < childElements.length; i++) {
+            var item = childElements[i];
+            console.log("item=====%@", item);
+            var imgurl = item.thumbnailURLs[0];
+            imgurl = "https://images.weserv.nl/?url=" + imgurl;
+            var bannerItem = { img: imgurl, des: item.title };
+            bannerListTemp.push(bannerItem);
+          }
+          that.setData({
+            "bannerData": bannerListTemp,
+            "bannerDes": bannerListTemp[0].des
+          });
         }
-        that.setData({
-          "bannerData":bannerListTemp,
-          "bannerDes": bannerListTemp[0].des
-        });
-
         var newsItemList = new Array;
         for (var i=1; i < dataSource.length; i++) {
           var dataItem = dataSource[i];
@@ -79,8 +81,13 @@ Page({
           var newItem = { title: dataItem.title, img: imgTemp,commentsCount: dataItem.commentsCount};
           newsItemList.push(newItem);
         }
-        console.log("----------------------%@",newsItemList);
+        // console.log("----------------------%@",newsItemList);
+        if (that.data.newsPageIndex > 1) {
+          newsItemList = that.data.newsListData.concat(newsItemList);
+        }
+        var index = that.data.newsPageIndex+1;
         that.setData({
+          "newsPageIndex": index,
           "newsListData":newsItemList
         });
       }
@@ -146,7 +153,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    this.fetchDataListFun();
   },
 
   /**
