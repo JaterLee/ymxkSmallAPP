@@ -29,16 +29,48 @@
   border-top: 1px solid lightgray;
 }
 
-.item-title {
+.leftItemView {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
   align-self: center;
   flex:1;
-  margin-left: 15rpx;
   margin-right: 15rpx;
+  margin-left: 15rpx;
+}
+
+.item-title {
+  font-size: 15px;
+  margin-bottom: 10rpx;
 }
 
 .item-image {
-  align-self: center;
+  align-self: flex-end;
+  height: 130rpx; 
   width: 200rpx;
-  height: 100rpx; 
+  padding-right: 15rpx;
+}
+
+.item-des {
+  display: flex;
+  flex-direction: row;
+}
+
+.item-time {
   margin-right: 15rpx;
+  font-size: 11px;
+  color: lightgray;
+}
+
+.comment-icon {
+  align-self: center;
+    width: 25rpx;
+  height: 25rpx;
+  margin-right: 10rpx;
+}
+
+.item-comment {
+  font-size: 11px;
+  color: lightgray;
 }

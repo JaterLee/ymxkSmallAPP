@@ -14,9 +14,59 @@
   <view class='newsListView'>
     <block wx:for='{{newsListData}}'>
       <view class='newItemView'>
-        <text class='item-title'>{{item.title}}</text>
-        <image class='item-image' src='{{item.img}}' binderror='onImageLoadFail' mode='widthFix'></image>
+        <view class='leftItemView'>
+          <text class='item-title'>{{item.title}}</text>
+          <view class='item-des'>
+            <text class='item-time'>{{ timeM.dateFormat(item.time) }}</text>
+            <image src='../../images/comment.png' class='comment-icon'></image>
+            <text class='item-comment'>{{item.commentsCount}}</text>
+          </view>
+        </view>
+        <image class='item-image' src='{{item.img}}' binderror='onImageLoadFail' mode='aspectFill' style='width: 150px'></image>
       </view>
     </block>
   </view>
 </view>
+
+<wxs module='timeM'>
+  //时间戳 -> 日期 yyyy-MM-dd HH:mm:ss
+  function format(ts) {
+    var d = getDate(ts);
+    return [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('-') +
+      ' ' + [d.getHours(), d.getMinutes(), d.getSeconds()].join(':')
+  }
+  //时间戳 -> 刚刚 几分钟前  几小时 几天
+  function dateFormat(ts) {
+    var minute = 1000 * 60;
+    var hour = minute * 60;
+    var day = hour * 24;
+    var halfamonth = day * 15;
+    var month = day * 30;
+    var now = getDate();
+    var diffValue = now - ts;
+    if (diffValue < 0) {
+      return;
+    }
+    var monthC = diffValue / month;
+    var weekC = diffValue / (7 * day);
+    var dayC = diffValue / day;
+    var hourC = diffValue / hour;
+    var minC = diffValue / minute;
+    if (monthC >= 1) {
+      return parseInt(monthC) + '月前';
+    } else if (weekC >= 1) {
+      return parseInt(weekC) + '周前';
+    } else if (dayC >= 1) {
+      return parseInt(dayC) + '天前';
+    } else if (hourC >= 1) {
+      return parseInt(hourC) + '小时前';
+    } else if (minC >= 1) {
+      return parseInt(minC) + '分钟前';
+    } else {
+      return '刚刚';
+    }
+  }
+
+  module.exports.format = format;
+  module.exports.dateFormat = dateFormat;
+</wxs>

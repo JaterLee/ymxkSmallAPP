@@ -41,6 +41,7 @@ Page({
    */
   fetchDataListFun: function (){
     var that = this;
+    console.log('res----------------');
     wx.request({
       url: 'http://appapi2.gamersky.com/v2/AllChannelList ',
       header: {
@@ -59,10 +60,8 @@ Page({
           var bannerItem = dataSource[0];
           var childElements = bannerItem.childElements;
           var bannerListTemp = new Array;
-          console.log("childElements=====%@", childElements);
           for (var i = 0; i < childElements.length; i++) {
             var item = childElements[i];
-            console.log("item=====%@", item);
             var imgurl = item.thumbnailURLs[0];
             imgurl = "https://images.weserv.nl/?url=" + imgurl;
             var bannerItem = { img: imgurl, des: item.title };
@@ -78,7 +77,7 @@ Page({
           var dataItem = dataSource[i];
           var imgTemp = "https://images.weserv.nl/?url=" + dataItem.thumbnailURLs[0];
           imgTemp = imgTemp;
-          var newItem = { title: dataItem.title, img: imgTemp,commentsCount: dataItem.commentsCount};
+          var newItem = { title: dataItem.title, img: imgTemp,commentsCount: dataItem.commentsCount, time: dataItem.updateTime};
           newsItemList.push(newItem);
         }
         // console.log("----------------------%@",newsItemList);
@@ -93,14 +92,6 @@ Page({
       }
     })
   },
-
-  /**
-   * onPullDownRefresh()
-   */
-  onPullDownRefresh() {
-    this.fetchDataListFun();
-  },
-
 /**
  * image load fail
  */
@@ -146,7 +137,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+    this.setData({
+      "newsPageIndex": 1
+    });
+    this.fetchDataListFun();
   },
 
   /**
