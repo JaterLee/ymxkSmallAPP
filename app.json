@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/feed/feed"
+    "pages/feed/feed",
+    "pages/index/newsDetail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

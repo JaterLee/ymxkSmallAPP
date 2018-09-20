@@ -13,7 +13,7 @@
   </view>
   <view class='newsListView'>
     <block wx:for='{{newsListData}}'>
-      <view class='newItemView'>
+      <view class='newItemView' id='{{item.id}}' bindtap='didSelectNewsAction'>
         <view class='leftItemView'>
           <text class='item-title'>{{item.title}}</text>
           <view class='item-des'>

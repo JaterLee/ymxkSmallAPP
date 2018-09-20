@@ -37,6 +37,16 @@ Page({
   },
 
   /**
+   * 点击新闻事件
+   */
+  didSelectNewsAction(event) {
+    console.log('++++++++++%@', event);
+    wx.navigateTo({
+      url: 'newsDetail?id=' + event.currentTarget.id,
+    });
+  },
+
+  /**
    * 拉取首页数据
    */
   fetchDataListFun: function (){
@@ -77,7 +87,7 @@ Page({
           var dataItem = dataSource[i];
           var imgTemp = "https://images.weserv.nl/?url=" + dataItem.thumbnailURLs[0];
           imgTemp = imgTemp;
-          var newItem = { title: dataItem.title, img: imgTemp,commentsCount: dataItem.commentsCount, time: dataItem.updateTime};
+          var newItem = { title: dataItem.title, img: imgTemp, commentsCount: dataItem.commentsCount, time: dataItem.updateTime, id: dataItem.contentId};
           newsItemList.push(newItem);
         }
         // console.log("----------------------%@",newsItemList);
